@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Terminal, FileText } from "lucide-react";
 import { useTerminalContext } from "../features/Terminal/useTerminalContext";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { dismissEntry, selectMostRecentExecution } from "../features/Terminal/terminalHistorySlice";
+import {
+  dismissEntry,
+  selectMostRecentExecution,
+} from "../features/Terminal/terminalHistorySlice";
 import { Button } from "./DesignSystem/Button";
 import { CommandWithAI } from "./shared/CommandWithAI";
 import {
@@ -38,6 +41,8 @@ export function CodeBlock({
   const executionResult = useAppSelector(
     selectMostRecentExecution(normalizedCode),
   );
+
+  console.log("executionResult", executionResult);
 
   // Convert the execution result to the format expected by CommandWithAI
   const result: ExecutionResult | null = executionResult
@@ -84,6 +89,7 @@ export function CodeBlock({
   const handleDismiss = () => {
     if (!isShellInteractive) return;
     if (executionResult?.id) {
+      console.log("dismissing", executionResult);
       dispatch(dismissEntry(executionResult.id));
     }
   };
@@ -125,15 +131,6 @@ export function CodeBlock({
     <CommandWithAI
       command={normalizedCode}
       title={language}
-      borderColor={
-        result
-          ? result.exitCode === 0
-            ? "border-ctp-green"
-            : result.exitCode === -1
-              ? "border-ctp-yellow" // Running state
-              : "border-ctp-red"
-          : "border-ctp-surface1"
-      }
       headerButtons={headerButtons}
       className={className}
       copied={copied}

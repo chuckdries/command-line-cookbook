@@ -73,12 +73,17 @@ export function CommandWithAI({
   let computedBorderColor = borderColor;
   if (result) {
     computedBorderColor =
-      result.exitCode === 0 ? "border-ctp-green" : "border-ctp-red";
+      result.exitCode !== -1
+        ? result.exitCode === 0
+          ? "border-ctp-green"
+          : "border-ctp-red"
+        : "border-ctp-surface0";
   }
 
   // Enhanced status bar with result info
   let enhancedStatusBar = statusBar;
-  if (result) {
+  // -1 => command still running
+  if (result && result.exitCode !== -1) {
     const resultStatusBar = (
       <div className="flex items-center justify-between ml-2">
         <div
@@ -93,7 +98,8 @@ export function CommandWithAI({
           )}
           <span>Exit: {result.exitCode}</span>
           <span className="text-ctp-subtext0">
-            at {result.timestamp.toLocaleTimeString()} • took {formatDuration(result.duration)}
+            at {result.timestamp.toLocaleTimeString()} • took{" "}
+            {formatDuration(result.duration)}
           </span>
         </div>
         <div className="flex items-center gap-2">
