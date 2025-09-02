@@ -2,12 +2,20 @@
 
 Use free command line tools to accomplish tasks, easily
 
+![Screenshot of the tutorial](./assets/screenshots/1-tutorial.png)
+
+![Screenshot of a recipe](./assets/screenshots/2-recipe.png)
+
 ### Use cases
 1. Learn about how to use a command line interface with interactive tutorials
 2. Install stuff with homebrew
 3. Download a video with yt-dlp
 4. Create icons from images with graphicsmagick
 5. Create gifs with gifski
+
+## How to download
+
+Download the appropriate installer by clicking on the file name from the [Releases page](https://github.com/chuckdries/command-line-cookbook/releases). Currently only macOS on Apple Silicon is supported, but Windows will be soon.
 
 ### Developing
 1. Install rust and [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)
