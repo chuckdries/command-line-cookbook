@@ -1,0 +1,135 @@
+@import "./fonts.css";
+@import "tailwindcss";
+@plugin "tailwindcss-react-aria-components";
+@plugin "@tailwindcss/typography";
+@config "./tailwind.config.js";
+
+@import "@catppuccin/tailwindcss/mocha.css";
+@import "@catppuccin/highlightjs/css/catppuccin-mocha.css";
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  /* prevent overscroll in mac */
+  overscroll-behavior: contain;
+}
+
+@theme {
+  --color-terminal-background: #281f2b;
+  --default-font-family: "JetBrains Mono", monospace;
+}
+
+@theme inline {
+  --color-hue-100: var(--hue-100);
+  --color-hue-300: var(--hue-300);
+  --color-hue: var(--hue-base);
+  --color-hue-700: var(--hue-700);
+}
+
+@layer base {
+  .hue-rosewater {
+    --hue-100: var(--catppuccin-color-rosewater-100);
+    --hue-base: var(--catppuccin-color-rosewater);
+    --hue-300: var(--catppuccin-color-rosewater-300);
+    --hue-700: var(--catppuccin-color-rosewater-700);
+  }
+  .hue-flamingo {
+    --hue-100: var(--catppuccin-color-flamingo-100);
+    --hue-base: var(--catppuccin-color-flamingo);
+    --hue-300: var(--catppuccin-color-flamingo-300);
+    --hue-700: var(--catppuccin-color-flamingo-700);
+  }
+  .hue-pink {
+    --hue-100: var(--catppuccin-color-pink-100);
+    --hue-base: var(--catppuccin-color-pink);
+    --hue-300: var(--catppuccin-color-pink-300);
+    --hue-700: var(--catppuccin-color-pink-700);
+  }
+  .hue-mauve {
+    --hue-100: var(--catppuccin-color-mauve-100);
+    --hue-base: var(--catppuccin-color-mauve);
+    --hue-300: var(--catppuccin-color-mauve-300);
+    --hue-700: var(--catppuccin-color-mauve-700);
+  }
+  .hue-red {
+    --hue-100: var(--catppuccin-color-red-100);
+    --hue-base: var(--catppuccin-color-red);
+    --hue-300: var(--catppuccin-color-red-300);
+    --hue-700: var(--catppuccin-color-red-700);
+  }
+  .hue-maroon {
+    --hue-100: var(--catppuccin-color-maroon-100);
+    --hue-base: var(--catppuccin-color-maroon);
+    --hue-300: var(--catppuccin-color-maroon-300);
+    --hue-700: var(--catppuccin-color-maroon-700);
+  }
+  .hue-peach {
+    --hue-100: var(--catppuccin-color-peach-100);
+    --hue-base: var(--catppuccin-color-peach);
+    --hue-300: var(--catppuccin-color-peach-300);
+    --hue-700: var(--catppuccin-color-peach-700);
+  }
+  .hue-yellow {
+    --hue-100: var(--catppuccin-color-yellow-100);
+    --hue-base: var(--catppuccin-color-yellow);
+    --hue-300: var(--catppuccin-color-yellow-300);
+    --hue-700: var(--catppuccin-color-yellow-700);
+  }
+  .hue-green {
+    --hue-100: var(--catppuccin-color-green-100);
+    --hue-base: var(--catppuccin-color-green);
+    --hue-300: var(--catppuccin-color-green-300);
+    --hue-700: var(--catppuccin-color-green-700);
+  }
+  .hue-teal {
+    --hue-100: var(--catppuccin-color-teal-100);
+    --hue-base: var(--catppuccin-color-teal);
+    --hue-300: var(--catppuccin-color-teal-300);
+    --hue-700: var(--catppuccin-color-teal-700);
+  }
+  .hue-sky {
+    --hue-100: var(--catppuccin-color-sky-100);
+    --hue-base: var(--catppuccin-color-sky);
+    --hue-300: var(--catppuccin-color-sky-300);
+    --hue-700: var(--catppuccin-color-sky-700);
+  }
+  .hue-sapphire {
+    --hue-100: var(--catppuccin-color-sapphire-100);
+    --hue-base: var(--catppuccin-color-sapphire);
+    --hue-300: var(--catppuccin-color-sapphire-300);
+    --hue-700: var(--catppuccin-color-sapphire-700);
+  }
+  .hue-blue {
+    --hue-100: var(--catppuccin-color-blue-100);
+    --hue-base: var(--catppuccin-color-blue);
+    --hue-300: var(--catppuccin-color-blue-300);
+    --hue-700: var(--catppuccin-color-blue-700);
+  }
+  .hue-lavender {
+    --hue-100: var(--catppuccin-color-lavender-100);
+    --hue-base: var(--catppuccin-color-lavender);
+    --hue-300: var(--catppuccin-color-lavender-300);
+    --hue-700: var(--catppuccin-color-lavender-700);
+  }
+}
+
+@layer components {
+  /* Remove default open/close quote pseudo-elements added by @tailwindcss/typography */
+  .prose blockquote {
+    quotes: none;
+  }
+  .prose blockquote p:first-of-type::before,
+  .prose :where(blockquote p:first-of-type)::before {
+    content: none !important;
+  }
+  .prose blockquote p:last-of-type::after,
+  .prose :where(blockquote p:last-of-type)::after {
+    content: none !important;
+  }
+}

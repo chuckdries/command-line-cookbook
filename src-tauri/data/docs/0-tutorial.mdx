@@ -1,0 +1,101 @@
+---
+title: Welcome to your command line interface
+---
+
+Welcome to Command Line Cookbook. I hope this resource will be helpful to you! Feel free to file an issue on GitHub if you have any trouble or ideas to improve it.
+
+# Primer: what is a command line?
+
+Before the mouse was invented, people used command lines to interact with their computers by entering text commands, and the computer would respond with more text.
+Heck, before computers had screens, people used typewriters to communicate with their computers, and when the computer needed to show something,
+it would print it out on paper. [This video by Youtube channel Usagi Electric](https://youtu.be/s0AB31qVW8U?si=8bFwCCiV1QU0LeN5&t=1342) shows this in action on the Bendix G-15,
+the oldest working digital computer in North America.
+
+Today, your OS still comes with a command line. In the age of graphical interfaces, your CLI is tucked inside an app called a "terminal emulator".
+Despite its ancient roots, it's still a powerful tool for interacting with your computer.
+
+We'll talk more about how to access your system's default terminal emulator later, but for now, CLI Cookbook comes with one built in for convenience. 
+It'll open automatically when you need it, but you can also press `Show terminal` in the top right of the window. **Press that now**.
+
+In it you should see a prompt that looks like this:
+
+<PromptDisplay />
+
+This is your **shell**. The shell is a program that interprets the commands you type and executes them. Your shell runs within the terminal emulator.
+
+## How do you run a command?
+
+Broadly, you type some text that tells your computer to do something. You can type a single word, or you can type a series of words separated by spaces. Generally,
+the first word is the name of the command you want to run, and the rest are arguments that modify how the command behaves.
+
+For example, the `echo` command prints out the text that follows it. Most code samples in Command Line Cookbook provide a "run" button for convenience,
+but just this once, try clicking into the terminal panel and typing the command below by hand, then press enter.
+
+```shell
+echo "Hello world!"
+```
+
+Another common command is `ls`, which lists the files and directories in the current working directory. Try it out!
+
+```shell
+# @interactive
+ls
+```
+
+This should've produced a list of files and folders such as Documents, Downloads, etc.
+
+## What is the working directory?
+
+The **working directory** is the directory that your shell is currently in. You can think of it as the "current location" of your shell.
+
+Some commands care about the working directory, but others don't. It depends on what they do.
+
+The `pwd` command prints out the current working directory. Try it out!
+
+```shell
+# @interactive
+pwd
+```
+
+For most people, that should've printed your **home directory**, which is the directory where you start when you log in.
+Each user account has their own home directory, and it's usually located in `/home/username` on Linux, `/Users/username` on macOS, or
+`C:\Users\username` on Windows. This is where your Downloads and Documents folders live.
+
+## Changing the working directory
+
+The `cd` command changes the working directory. Try it out by typing `cd` followed by a space, followed by the name of one of the
+folders in the output of the `ls` command you ran earlier.
+
+```shell
+# @interactive
+cd Documents
+```
+
+Now, run `pwd` again to see how the working directory has changed.
+
+```shell
+# @interactive
+pwd
+```
+
+## Relative vs absolute paths
+
+In the cd command you ran above, `Documents` is a **relative path**. It's a path that refers to a location relative to the current working directory.
+
+On the other hand, `/home/username/Documents` refers to the same location, but it is an **absolute path**. It's a path that starts from the root directory (`/` on Linux/macOS, `C:\` on Windows). Relative paths depend on context, while absolute paths always mean the same thing.
+
+Try running the following commands
+
+```shell
+# @interactive
+cd ..
+```
+
+`..` is a special relative path that means "the parent" (i.e. the folder that contains this one). You should now be back in your home directory. Confirm that with `pwd`.
+
+```shell
+# @interactive
+pwd
+```
+
+That's all for now! Next, you'll want to read about how to install new command line tools.

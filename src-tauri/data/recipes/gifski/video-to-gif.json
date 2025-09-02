@@ -1,0 +1,32 @@
+{
+  "name": "🎥 Create a GIF from a video",
+  "description": "",
+  "base": "gifski",
+  "args": ["-o {{output-file}}", "{{input-file}}"],
+  "tokens": {
+    "input-file": {
+      "label": "Input File",
+      "description": "The input file to convert",
+      "required": true,
+      "type": "open",
+      "filters": [
+        {
+          "name": "Video Files",
+          "extensions": ["mp4", "mov", "avi", "mkv", "webm"]
+        }
+      ]
+    },
+    "output-file": {
+      "label": "Output File",
+      "description": "The output file to save to",
+      "required": true,
+      "type": "save",
+      "filters": [
+        {
+          "name": "GIF Files",
+          "extensions": ["gif"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "📺 Download YouTube Video",
+  "description": "Download a YouTube video to the current working directory",
+  "base": "yt-dlp",
+  "args": [
+    "-f {{format}}",
+    "\"{{url}}\""
+  ],
+  "tokens": {
+    "url": {
+      "required": true,
+      "label": "YouTube URL",
+      "description": "The URL of the YouTube video to download",
+      "type": "url"
+    },
+    "format": {
+      "required": false,
+      "label": "Format",
+      "description": "The format of the video to download. The placeholder value says \"use best settings as MP4\"",
+      "type": "text",
+      "helpLink": "https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#format-selection-examples",
+      "defaultValue": "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"
+    }
+  }
+}

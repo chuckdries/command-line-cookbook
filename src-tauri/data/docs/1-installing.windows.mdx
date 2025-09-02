@@ -1,0 +1,95 @@
+---
+title: Install common CLI tools with Winget
+platform: windows
+---
+
+Many of the commands you'll run in your shell are actually discrete programs,
+and you can install more of them! There's a wide world of cool and useful
+third-party command-line tools out there.
+
+A few of the tools that are highlighted in this recipe are:
+
+- `imagemagick` - convert and manipulate images
+- `yt-dlp` - download videos (and audio) from the internet
+- `gifski` - state of the art video to gif conversion
+
+You only need to install the ones for the recipes you actually want to use. You 
+often install CLI tools with a package manager. Windows 10 and 11 include one called the Windows Package Manager (`winget`).
+
+Here's how you can install the tools we'll be using with winget.
+
+## How to install a package with winget
+
+Winget supports two common install command formats:
+
+- Simple search form: `winget install <query>`
+  - Lets winget search by name. May prompt you to choose a package if there are multiple matches.
+- Exact ID form: `winget install -e --id <Package.Id>`
+  - Uses the package identifier for an exact match. Avoids prompts and is more reliable for scripting.
+
+In this guide we use the exact ID form. Arguments explained:
+
+- `install`: Install a package
+- `-e` / `--exact`: Require an exact match (no fuzzy search)
+- `--id <Package.Id>`: Install by the package identifier from the winget repository
+
+### ImageMagick - Image Processing
+
+Features of ImageMagick include:
+- Convert images to different formats, such as PNG, JPEG, and HEIC
+- Create ICO icon files
+- Convert an image with a white background to a transparent PNG
+- Resize an image
+
+<InstallBlock 
+  installCommand="winget install -e --id ImageMagick.ImageMagick"
+  binaryName="magick"
+/>
+
+### yt-dlp - Downloading Videos
+
+Features of yt-dlp include:
+- Download a video from popular video platforms
+- Download just the audio from a video
+
+<InstallBlock 
+  installCommand="winget install -e --id yt-dlp.yt-dlp"
+  binaryName="yt-dlp"
+/>
+
+### gifski - Video to GIF Conversion
+
+<InstallBlock 
+  installCommand="winget install -e --id ImageOptim.gifski"
+  binaryName="gifski"
+/>
+
+
+## Managing Installed Packages
+
+If you decide you no longer want a package on your system, you can uninstall it. For example, to remove ImageMagick:
+
+```powershell
+# @interactive
+winget uninstall -e --id ImageMagick.ImageMagick
+```
+
+To see what you have installed with winget, run:
+
+```powershell
+# @interactive
+winget list
+```
+
+## Manual Installation Check
+
+You can also manually check if a command is installed.
+
+In PowerShell:
+
+```powershell
+# @interactive
+Get-Command magick
+```
+
+This will print the path to the command if it's installed, or nothing if it's not. Note that we used the name of the actual command you run (`magick`), which can be different from the package name in winget.

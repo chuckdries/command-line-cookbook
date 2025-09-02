@@ -1,0 +1,41 @@
+{
+  "name": "🏞️ Create a Mac .icns Icon",
+  "description": "",
+  "base": "magick",
+  "args": [
+    "{{input-file}}",
+    "-define icon:auto-resize={{icon-sizes}}",
+    "{{output-file}}"
+  ],
+  "tokens": {
+    "input-file": {
+      "required": true,
+      "label": "Input Image",
+      "description": "Path to the image to convert to an icon",
+      "type": "open",
+      "filters": [
+        {
+          "name": "Image Files",
+          "extensions": ["png", "jpg", "jpeg", "gif", "bmp", "tiff"]
+        }
+      ]
+    },
+    "icon-sizes": {
+      "required": false,
+      "label": "Icon Sizes",
+      "description": "Resize the image to squares of these sizes. All sizes will be packed into a single .ico file.",
+      "type": "number",
+      "multivalue": true,
+      "defaultValue": "16,32,64,128,256,512",
+      "delimiter": ","
+    },
+    "output-file": {
+      "required": true,
+      "label": "Output Icon",
+      "description": "Path to save the icon to",
+      "type": "save",
+      "filters": [{ "name": "Icon Files", "extensions": ["icns"] }],
+      "defaultPath": "output.icns"
+    }
+  }
+}

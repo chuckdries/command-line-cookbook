@@ -1,0 +1,37 @@
+{
+  "name": "🎥 Convert video to MP4",
+  "hidden": true,
+  "description": "Convert a video file to MP4",
+  "base": "ffmpeg",
+  "args": [
+    "-i {{input-file}}",
+    "-c:v h264_videotoolbox -c:a aac",
+    "{{output-file}}"
+  ],
+  "tokens": {
+    "input-file": {
+      "label": "Input File",
+      "description": "The input file to convert",
+      "required": true,
+      "type": "open",
+      "filters": [
+        {
+          "name": "Video Files",
+          "extensions": ["mp4", "mov", "avi", "mkv", "webm"]
+        }
+      ]
+    },
+    "output-file": {
+      "label": "Output File",
+      "description": "The output file to convert to",
+      "required": true,
+      "type": "save",
+      "filters": [
+        {
+          "name": "Video Files",
+          "extensions": ["mp4"]
+        }
+      ]
+    }
+  }
+}

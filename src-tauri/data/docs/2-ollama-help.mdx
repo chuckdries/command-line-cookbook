@@ -1,0 +1,84 @@
+---
+title: Get help with Ollama
+---
+
+Learning how to use a command line can be hard. There's a lot of jargon and
+arcane knowledge to learn, and it's easy to get stuck.
+
+That's where an LLM can help! They're pretty good at rephrasing error
+messages full of jargon into something more understandable, and they can
+be a great jumping off point for what to search for.
+
+Using AI to learn is absolutely not a firm requirement! But, if you're interested, this guide will teach
+you how to install and use Ollama, which runs open source AI models on entirely your GPU.
+
+## Ollama runs LLMs on your computer
+
+Commercial AI chatbots run on servers in datacenters, which cost money to run and maintain.
+Ollama runs entirely on your GPU, so it's free to use (assuming you've already paid for a computer with a GPU).
+
+## Installing and using Ollama
+
+First, we'll install Ollama. You can download it from the [Ollama website](https://ollama.com/download). Just open
+the installer and follow the instructions.
+
+## Selecting a model
+
+Next, you'll need to download a model. You'll want to select a model that fits entirely on your GPU's memory.
+The default model is `qwen3:4b`, which is 2.5gb. If you have 8gb or more of VRAM, 
+I recommend changing it to `qwen3:8b` in [settings](/settings) (and make sure you type 8b in the instructions in
+the rest of this tutorial)
+You can browse [ollama.com/models](https://ollama.com/models) for more models of various sizes and capabilities.
+
+You can download it by running `ollama pull`.
+Note that this can take a while, depending on your internet connection. As with most commands, you can
+interrupt it by focusing the terminal and pressing `Ctrl+C`.
+
+```shell
+# @interactive
+ollama pull qwen3:4b
+```
+
+## Run the model
+Now, you can start the model by running `ollama run`. This will start the model and open a chat interface. Try
+saying hello, or asking it questions. It'll take over your terminal panel until it exits.
+You can type `/bye` to exit.
+
+```shell
+# @interactive
+ollama run qwen3:4b
+```
+
+> Always remember: AI can make mistakes
+
+### Tip: Ctrl+D
+
+When command line apps take over your terminal like that, most will exit if you type `Ctrl+D`.
+This is a shortcut that sends a special signal called `EOF`, which is terminal speak
+for "end of file" aka "I'm done giving you input".
+
+## Thinking
+
+You might've noticed that the ai mentioned it was thinking.
+"Thinking" is a feature that allows the AI to have an internal monologue
+before giving you an answer. It can improve the accuracy of the answer, but it can be a waste 
+of time for simple questions. Ollama enables it by default for qwen3, but you can disable it by
+adding `--think=false` to the command.
+
+```shell
+# @interactive
+ollama run qwen3:4b --think=false
+```
+
+## Command Line Cookbook's built in Ollama integration
+
+You can always use `ollama` from the terminal at any time, but Command Line Cookbook has a built in Ollama integration
+for convenience. To show you how it works, here's a nonsense command that will probably fail. Run it, and when it doesn't work,
+press the "Ask for help" button.
+
+```shell
+# @interactive
+cd ./nonexistent-directory
+```
+
+CLI Cookbook uses Ollama's HTTP API to avoid cluttering up your terminal. We also disable thinking in our Ollama calls.

@@ -1,0 +1,45 @@
+{
+  "name": "📷 Convert HEIC or WEBP to JPEG",
+  "description": "Hot tip: this recipe will actually work for almost any image format",
+  "base": "magick",
+  "args": ["{{input-file}}", "-quality {{quality}}", "{{output-file}}"],
+  "tokens": {
+    "input-file": {
+      "required": true,
+      "label": "Input Image",
+      "description": "Path to the image to convert",
+      "type": "open",
+      "filters": [
+        {
+          "name": "Image Files",
+          "extensions": [
+            "heic",
+            "heif",
+            "webp",
+            "png",
+            "gif",
+            "bmp",
+            "tiff",
+            "jpg",
+            "jpeg"
+          ]
+        }
+      ]
+    },
+    "quality": {
+      "required": false,
+      "label": "JPEG Quality",
+      "description": "Output JPEG quality (0-100). Higher is better and larger.",
+      "type": "number",
+      "defaultValue": "92"
+    },
+    "output-file": {
+      "required": true,
+      "label": "Output JPEG",
+      "description": "Path to save the JPEG file",
+      "type": "save",
+      "filters": [{ "name": "JPEG Files", "extensions": ["jpg", "jpeg"] }],
+      "defaultPath": "output.jpg"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "🎧 Download YouTube Audio",
+  "description": "Download a YouTube video as an audio file to the current working directory",
+  "base": "yt-dlp",
+  "args": [
+    "-x",
+    "--audio-format {{format}}",
+    "\"{{url}}\""
+  ],
+  "tokens": {
+    "url": {
+      "required": true,
+      "label": "YouTube URL",
+      "description": "The URL of the YouTube video to download",
+      "type": "url"
+    },
+    "format": {
+      "required": false,
+      "label": "Format",
+      "description": "The format of the audio file to download",
+      "type": "text",
+      "defaultValue": "mp3"
+    }
+  }
+}

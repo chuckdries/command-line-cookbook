@@ -1,0 +1,107 @@
+---
+title: Install common CLI tools with Homebrew
+platform: macos
+---
+
+Many of the commands you'll run in your shell are actually discrete programs,
+and you can install more of them! There's a wide world of cool and useful
+third party command line tools out there, and we'll need a few of them to
+use the recipes in this cookbook.
+
+First, we'll install a **package manager** called Homebrew. A package manager
+is a tool that allows you to easily install, update, and manage software on
+your system. Homebrew is the most popular one for macOS. Read more about it
+on [Homebrew's website](https://brew.sh/).
+
+<InstallBlock 
+  installCommand='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
+  binaryName="brew"
+/>
+
+This is the scariest looking command we've seen so far! The way to read this is that
+we're using curl to download a script from GitHub and running it with the bash shell. Generally,
+you should be wary of commands that look like this, because that GitHub script could do anything.
+But I promise this one is safe :)
+
+## Now we can install some fun stuff!
+
+Try installing and running cowsay, which will print out a cute message in ASCII art.
+
+<InstallBlock
+  installCommand="brew install cowsay"
+  binaryName="cowsay"
+/>
+
+```shell
+# @interactive
+cowsay "Don't forget to drink water!"
+```
+
+A few of the more useful tools that are highlighted in this cookbook are:
+
+- `imagemagick` - convert and manipulate images
+- `yt-dlp` - download videos (and audio) from the internet
+- `gifski` - state of the art video to gif conversion
+
+You only need to install the ones for the recipes you actually want to use. Now that
+you have Homebrew, installing these other tools is super easy! Just run the code listed
+below for the tools you want to install.
+
+### ImageMagick - Image Processing
+
+<InstallBlock 
+  installCommand="brew install imagemagick"
+  binaryName="magick"
+/>
+
+Features of ImageMagic include:
+- Convert images to different formats, such as PNG, JPEG, and HEIC
+- Create ICO icon files
+- Convert an image with a white background to a transparent PNG
+- Resize an image
+
+### yt-dlp - Video Downloading
+
+<InstallBlock 
+  installCommand="brew install yt-dlp"
+  binaryName="yt-dlp"
+/>
+
+Features of yt-dlp include:
+- Download a video from popular video platforms
+- Download just the audio from a video
+
+### gifski - Video to GIF Conversion
+
+<InstallBlock 
+  installCommand="brew install gifski"
+  binaryName="gifski"
+/>
+
+
+## Managing Installed Packages
+
+If you decide you no longer want a package on your system, you can uninstall it. For example, to remove imagemagick:
+
+```shell
+# @interactive
+brew uninstall imagemagick
+```
+
+To check what is installed with homebrew, you can run:
+
+```shell
+# @interactive
+brew list
+```
+
+## Manual Installation Check
+
+You can also manually check if a command is installed by running:
+
+```shell
+# @interactive
+which magick
+```
+
+It'll print the path to the command if it's installed, or nothing if it's not. Note that in the above command, we used the name of the actual command you run, which can be different from the name of the package in homebrew.
